@@ -1,0 +1,18 @@
+<?php 
+
+class Database
+{
+    public static function connect($config)
+    {
+        try {
+            return new PDO(
+                $config['connection'].';dbname='.$config['name'],
+                $config['username'], 
+                $config['password'],
+                $config['options']
+            );
+        } catch (PDOException $e) {
+            die('Couldnt connect ' . $e->getMessage());
+        }
+    }
+}
